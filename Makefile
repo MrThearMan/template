@@ -1,4 +1,3 @@
-
 .PHONY: help dev docs tests test tox hook pre-commit mypy Makefile
 
 # Trick to allow passing commands to make
