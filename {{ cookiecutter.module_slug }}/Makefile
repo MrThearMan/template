@@ -6,6 +6,7 @@
 .PHONY: tox
 .PHONY: hook
 .PHONY: pre-commit
+.PHONY: pre-commit-update
 .PHONY: mypy
 .PHONY: Makefile
 
@@ -64,4 +65,4 @@ pre-commit-update:
 	@poetry run pre-commit autoupdate
 
 mypy:
-	@poetry run mypy .../
+	@poetry run mypy {{ cookiecutter.module_slug }}/

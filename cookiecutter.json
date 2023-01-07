@@ -1,0 +1,11 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '-')|replace('_', '-')|replace('.', '-')|trim() }}",
+  "module_slug": "{{ cookiecutter.project_slug.replace('-', '_') }}",
+  "repo_slug": "{{ cookiecutter.project_slug }}",
+  "pypi_name": "{{ cookiecutter.repo_slug }}",
+  "description": "...",
+  "_copy_without_render": [
+    "*.github/workflows/*"
+  ]
+}

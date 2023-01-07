@@ -1,19 +1,17 @@
 [tool.poetry]
-name = "..."
+name = "cookiecutter-poetry-library"
 version = "0.0.1"
-description = "..."
+description = "Cookiecutter template for writing libraries with poetry."
 authors = [
     "Matti Lamppu <lamppu.matti.akseli@gmail.com>",
 ]
-packages = [
-    { include = "..." },
-]
 license = "MIT"
 readme = "README.md"
-homepage = "https://mrthearman.github.io/.../"
-repository = "https://github.com/MrThearMan/..."
+homepage = "https://mrthearman.github.io/cookiecutter-poetry-module/"
+repository = "https://github.com/MrThearMan/cookiecutter-poetry-module"
 keywords = [
-    "...",
+    "cookiecutter",
+    "poetry",
 ]
 classifiers = [
     "Environment :: Web Environment",
@@ -37,7 +35,7 @@ exclude = [
 ]
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://github.com/MrThearMan/.../issues"
+"Bug Tracker" = "https://github.com/MrThearMan/cookiecutter-poetry-module/issues"
 
 [tool.poetry.dependencies]
 python = ">=3.8,<4"

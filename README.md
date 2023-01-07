@@ -1,40 +1,21 @@
-# ...
+# Cookiecutter template for writing libraries with poetry
 
-[![Coverage Status][coverage-badge]][coverage]
-[![GitHub Workflow Status][status-badge]][status]
-[![PyPI][pypi-badge]][pypi]
-[![GitHub][licence-badge]][licence]
-[![GitHub Last Commit][repo-badge]][repo]
-[![GitHub Issues][issues-badge]][issues]
-[![Downloads][downloads-badge]][pypi]
-[![Python Version][version-badge]][pypi]
+> This template is meant for personal use for my own projects.
+
+## How to install
 
 ```shell
-pip install ...
+pip install cookiecutter
+cookiecutter gh:MrThearMan/template
 ```
 
----
+## Options
 
-**Documentation**: [https://mrthearman.github.io/.../](https://mrthearman.github.io/.../)
-
-**Source Code**: [https://github.com/MrThearMan/.../](https://github.com/MrThearMan/.../)
-
----
-
-...
-
-[coverage-badge]: https://coveralls.io/repos/github/MrThearMan/.../badge.svg?branch=main
-[status-badge]: https://img.shields.io/github/actions/workflow/status/MrThearMan/.../test.yml?branch=main
-[pypi-badge]: https://img.shields.io/pypi/v/...
-[licence-badge]: https://img.shields.io/github/license/MrThearMan/...
-[repo-badge]: https://img.shields.io/github/last-commit/MrThearMan/...
-[issues-badge]: https://img.shields.io/github/issues-raw/MrThearMan/...
-[version-badge]: https://img.shields.io/pypi/pyversions/...
-[downloads-badge]: https://img.shields.io/pypi/dm/...
-
-[coverage]: https://coveralls.io/github/MrThearMan/...?branch=main
-[status]: https://github.com/MrThearMan/.../actions/workflows/test.yml
-[pypi]: https://pypi.org/project/...
-[licence]: https://github.com/MrThearMan/.../blob/main/LICENSE
-[repo]: https://github.com/MrThearMan/.../commits/main
-[issues]: https://github.com/MrThearMan/.../issues
+| Setting        | Description                                                                                                |
+|----------------|------------------------------------------------------------------------------------------------------------|
+| `project_name` | Used for README title, mkdocs site name, and index page title.                                             |
+| `project_slug` | Derived from `project_name`, separator is "-". Used in generating `module_slug`, `repo_slug`, `pypi_name`. |
+| `module_slug`  | Derived from `project_slug`, separator is "_". Used to generate the project folder and module folder.      |
+| `repo_slug`    | Derived from `project_slug`, separator is "_". Used to generate links to the repo.                         |
+| `pypi_name`    | Derived from `repo_slug`, separator is "_". Used to for the poetry project name and pip links.             |
+| `description`  | Short description for the project. Used for README and mkdocs index page description.                      |
