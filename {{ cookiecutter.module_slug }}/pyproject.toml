@@ -63,7 +63,7 @@ line-length = 120
 [tool.ruff]
 fix = true
 line-length = 120
-exclude = [
+extend-exclude = [
     "tests/*",
 ]
 select = [
