@@ -47,6 +47,7 @@ pytest = "7.2.0"
 coverage = "6.5.0"
 pre-commit = "2.21.0"
 tox = "4.2.4"
+tox-gh-actions = "3.0.0"
 coveralls = "3.3.1"
 
 [tool.poetry.group.docs.dependencies]
@@ -108,6 +109,13 @@ legacy_tox_ini = """
 [tox]
 envlist = py{38, 39, 310, 311}
 isolated_build = true
+
+[gh-actions]
+python =
+    3.8: py38
+    3.9: py39
+    3.10: py310
+    3.11: py311
 
 [testenv]
 allowlist_externals =
