@@ -19,6 +19,8 @@ pip install {{ cookiecutter.pypi_name }}
 
 **Source Code**: [https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/](https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/)
 
+**Contributing**: [https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/blob/main/CONTRIBUTING.md](https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/blob/main/CONTRIBUTING.md)
+
 ---
 
 {{ cookiecutter.description }}
