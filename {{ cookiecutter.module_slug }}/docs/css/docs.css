@@ -78,6 +78,36 @@ code {
     border-radius: 3px;
 }
 
+code > span.hll {
+    background: #1c1c1c;
+}
+
+/*First highlighted code line that is followed by another highlighted code line*/
+code > span.hll:not(span.hll + a + span.hll):has(+ a + span.hll) {
+    /*background: blue;*/
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+/*Last highlighted code line that is preceded by another highlighted code line*/
+code > span.hll:not(span.hll:has(+ a + span.hll)) {
+    /*background: red;*/
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+/*Highlighted code line that is not followed or preceded by another highlighted code line*/
+code > span.hll:not(span.hll + a + span.hll):not(:has(+ a + span.hll)) {
+    /*background: yellow;*/
+    border-radius: 3px;
+}
+
+div.highlight > span.filename {
+    /*background: red;*/
+    padding: 8px;
+    line-height: 1.8rem;
+}
+
 .hljs-attribute,
 .hljs-name,
 .hljs-tag,
