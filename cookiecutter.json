@@ -5,6 +5,7 @@
   "repo_slug": "{{ cookiecutter.project_slug }}",
   "pypi_name": "{{ cookiecutter.repo_slug }}",
   "description": "...",
+  "django_module": false,
   "_copy_without_render": [
     "*.github/workflows/*"
   ]

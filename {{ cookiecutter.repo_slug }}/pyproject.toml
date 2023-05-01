@@ -41,10 +41,17 @@ exclude = [
 
 [tool.poetry.dependencies]
 python = ">=3.8,<4"
+{% if cookiecutter.django_module %}
+Django = ">=3.2"
+djangorestframework = ">=3.12.0"
+{% endif %}
 
 [tool.poetry.group.test.dependencies]
 pytest = "7.3.0"
 coverage = "6.5.0"
+{% if cookiecutter.django_module %}
+pytest-django = "4.5.2"
+{% endif %}
 pre-commit = "3.2.2"
 tox = "4.4.12"
 tox-gh-actions = "3.1.0"
@@ -57,6 +64,10 @@ mkdocs-mermaid2-plugin = "0.6.0"
 
 [tool.poetry.group.lint.dependencies]
 mypy = "1.2.0"
+{% if cookiecutter.django_module %}
+django-stubs = "1.16.0"
+djangorestframework-stubs = "1.10.0"
+{% endif %}
 
 [tool.black]
 line-length = 120
@@ -87,6 +98,17 @@ ignore = [
 python_version = "3.11"
 warn_return_any = "True"
 warn_unused_configs = "True"
+{% if cookiecutter.django_module %}
+plugins = [
+    "mypy_django_plugin.main",
+    "mypy_drf_plugin.main",
+]
+{% endif %}
+
+{% if cookiecutter.django_module %}
+[tool.django-stubs]
+django_settings_module = "tests.django.settings"
+{% endif %}
 
 [tool.coverage.run]
 relative_files = true
@@ -108,6 +130,47 @@ exclude_lines = [
 addopts = "-vv -s --log-cli-level=INFO"
 
 [tool.tox]
+
+{% if cookiecutter.django_module %}
+legacy_tox_ini = """
+[tox]
+envlist = py{39, 310, 311}-drf{312, 313, 314}
+isolated_build = true
+
+[gh-actions]
+python =
+    3.9: py39
+    3.10: py310
+    3.11: py311
+
+[testenv]
+allowlist_externals =
+    poetry
+setenv =
+    PYTHONPATH = {toxinidir}
+    DJANGO_SETTINGS_MODULE = tests.django.settings
+deps =
+    py39: Django >=3.2,<4.0
+
+    py310-drf312: Django >=3.2,<4.0
+    py310-drf313: Django >=4.0,<4.1
+    py310-drf314: Django >=4.1,<4.2
+
+    py311-drf312: Django >=3.2,<4.0
+    py311-drf313: Django >=4.0,<4.1
+    py311-drf314: Django >=4.2,<4.3
+
+    drf312: djangorestframework >=3.12.0,<3.13.0
+    drf313: djangorestframework >=3.13.0,<3.14.0
+    drf314: djangorestframework >=3.14.0,<3.15.0
+
+    pytest
+    coverage
+    pytest-django
+commands =
+    coverage run -m pytest -vv -s --log-cli-level=INFO
+"""
+{% else %}
 legacy_tox_ini = """
 [tox]
 envlist = py{38, 39, 310, 311}
@@ -129,6 +192,7 @@ commands =
     poetry install
     poetry run coverage run -m pytest
 """
+{% endif %}
 
 [build-system]
 requires = ["poetry-core>=1.5.0"]

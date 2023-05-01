@@ -1,10 +1,8 @@
-{% if cookiecutter.django_module %}
 import os
 
-import django
+from django.core.wsgi import get_wsgi_application
 
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tests.django.settings")
 
-django.setup()
-{% endif %}
+application = get_wsgi_application()
