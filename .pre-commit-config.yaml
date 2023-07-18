@@ -23,8 +23,8 @@ repos:
             "--markdown-linebreak-ext=md"
             ]
 
--   repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.260
+-   repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.0.278
     hooks:
     -   id: ruff
 
