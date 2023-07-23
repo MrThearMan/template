@@ -180,6 +180,7 @@ By contributing, you agree that your contributions will be licensed under the [M
 [pull request]: https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/compare
 [fork]: https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/fork
 [setup]: https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/blob/main/CONTRIBUTING.md#setting-up-the-environment
+[tox]: https://tox.wiki/
 [code-guidelines]: https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/blob/main/CONTRIBUTING.md#guidelines-for-writing-code
 [docs-guidelines]: https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/blob/main/CONTRIBUTING.md#guidelines-for-writing-documentation
 [reviewed]: https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/blob/main/CONTRIBUTING.md#code-review-process
