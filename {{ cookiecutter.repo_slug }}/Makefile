@@ -39,9 +39,9 @@ export helptext
 
 help:
 	@echo "$$helptext"
-
+{% if cookiecutter.django_module %}
 dev:
-	@poetry run python manage.py runserver localhost:8000
+	@poetry run python manage.py runserver localhost:8000{% endif %}
 
 docs:
 	@poetry run mkdocs serve -a localhost:8080

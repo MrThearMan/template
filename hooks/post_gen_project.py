@@ -3,7 +3,8 @@ import sys
 import shutil
 
 REMOVE_PATHS = [
-    '{% if cookiecutter.django_module %} tests/django {% endif %}',
+    {% if not cookiecutter.django_module %}'tests/project',
+    'manage.py',{% endif %}
 ]
 
 for path in REMOVE_PATHS:
