@@ -134,7 +134,7 @@ plugins = [
 ]{% endif %}{% if cookiecutter.django_module %}
 
 [tool.django-stubs]
-django_settings_module = "tests.django.settings"{% endif %}
+django_settings_module = "tests.project.settings"{% endif %}
 
 [tool.coverage.run]
 relative_files = true
