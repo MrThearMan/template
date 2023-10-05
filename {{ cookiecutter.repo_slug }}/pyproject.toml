@@ -23,10 +23,10 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",{% if cookiecutter.django_module %}
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",{% if cookiecutter.django_module %}
     "Framework :: Django :: 3.2",
     "Framework :: Django :: 4.0",
     "Framework :: Django :: 4.1",
@@ -44,27 +44,27 @@ exclude = [
 "Bug Tracker" = "https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/issues"
 
 [tool.poetry.dependencies]
-python = ">=3.8,<4"{% if cookiecutter.django_module %}
+python = ">=3.9,<4"{% if cookiecutter.django_module %}
 Django = ">=3.2"
 djangorestframework = ">=3.12.0"{% endif %}
 
 [tool.poetry.group.test.dependencies]
-pytest = "7.4.0"
-coverage = "7.2.7"{% if cookiecutter.django_module %}
+pytest = "7.4.2"
+coverage = "7.3.2"{% if cookiecutter.django_module %}
 pytest-django = "4.5.2"{% endif %}
-pre-commit = "3.3.3"
-tox = "4.7.0"
+pre-commit = "3.4.0"
+tox = "4.11.3"
 tox-gh-actions = "3.1.3"
 
 [tool.poetry.group.docs.dependencies]
-mkdocs = "1.5.2"
-pymdown-extensions = "10.1"
-mkdocs-mermaid2-plugin = "1.0.8"
+mkdocs = "1.5.3"
+pymdown-extensions = "10.3"
+mkdocs-mermaid2-plugin = "1.1.1"
 
 [tool.poetry.group.lint.dependencies]
-mypy = "1.5.0"{% if cookiecutter.django_module %}
-django-stubs = "4.2.3"
-djangorestframework-stubs = "3.14.2"{% endif %}
+mypy = "1.5.1"{% if cookiecutter.django_module %}
+django-stubs = "4.2.4"
+djangorestframework-stubs = "3.14.3"{% endif %}
 
 [tool.black]
 line-length = 120
@@ -82,24 +82,23 @@ select = [
     "A",        # flake8-builtins
     "ANN",      # flake8-annotations
     "ARG",      # flake8-unused-arguments
-    "ASYNC",    # flake8-async
     "B",        # flake8-bugbear
     "BLE",      # flake8-blind-except
     "C90",      # mccabe
     "C4",       # flake8-comprehensions
     "COM",      # flake8-commas
-    "DJ",       # flake8-django
+    "D200",     # pydocstyle: One-line docstring should fit on one line
+    "D201",     # pydocstyle: No blank lines allowed before function docstring (found {num_lines})
+    "D202",     # pydocstyle: No blank lines allowed after function docstring (found {num_lines})
+    "D209",     # pydocstyle: Multi-line docstring closing quotes should be on a separate line
+    "D213",     # pydocstyle: Multi-line docstring summary should start at the second line
     "DTZ",      # flake8-datetimez
     "E",        # pycodestyle errors
     "EM",       # flake8-errmsg
-    "ERA",      # eradicate
     "F",        # pyflakes
-    "FA",       # flake8-future-annotations
     "FBT",      # flake8-boolean-trap
     "I",        # isort
-    "ICN",      # flake8-import-conventions
     "INP",      # flake8-no-pep420
-    "INT",      # flake8-gettext
     "ISC",      # flake8-implicit-str-concat
     "N",        # pep8-naming
     "PERF",     # perflint
@@ -110,22 +109,22 @@ select = [
     "PTH",      # flake8-use-pathlib
     "PYI",      # flake8-pyi
     "Q",        # flake8-quotes
+    "RET",      # flake8-return
+    "RSE",      # flake8-raise
     "RUF",      # ruff-specific rules
     "S",        # flake8-bandit
     "SIM",      # flake8-simplify
-    "SLF",      # flake8-self
-    "SLOT",     # flake8-slots
-    "T10",      # flake8-debugger
     "T20",      # flake8-print
     "TCH",      # flake8-type-checking
     "TRY",      # tryceratops
+    "UP",       # pyupgrade
     "W",        # pycodestyle warnings
 ]
 ignore = [
 ]
 
 [tool.mypy]
-python_version = "3.11"
+python_version = "3.12"
 warn_return_any = "True"
 warn_unused_configs = "True"{% if cookiecutter.django_module %}
 plugins = [
@@ -158,7 +157,7 @@ addopts = "-vv -s --log-cli-level=INFO"
 [tool.tox]{% if cookiecutter.django_module %}
 legacy_tox_ini = """
 [tox]
-envlist = py{39, 310, 311}-drf{312, 313, 314}
+envlist = py{39, 310, 311, 312}-drf{312, 313, 314}
 isolated_build = true
 
 [gh-actions]
@@ -166,6 +165,7 @@ python =
     3.9: py39
     3.10: py310
     3.11: py311
+    3.12: py312
 
 [testenv]
 allowlist_externals =
@@ -195,7 +195,7 @@ commands =
     coverage run -m pytest -vv -s --log-cli-level=INFO
 """{% else %}legacy_tox_ini = """
 [tox]
-envlist = py{39, 310, 311}
+envlist = py{39, 310, 311, 312}
 isolated_build = true
 
 [gh-actions]
@@ -203,6 +203,7 @@ python =
     3.9: py39
     3.10: py310
     3.11: py311
+    3.12: py312
 
 [testenv]
 allowlist_externals =
@@ -215,5 +216,5 @@ commands =
 """{% endif %}
 
 [build-system]
-requires = ["poetry-core>=1.5.0"]
+requires = ["poetry-core>=1.7.0"]
 build-backend = "poetry.core.masonry.api"
