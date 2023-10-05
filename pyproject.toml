@@ -108,6 +108,9 @@ select = [
     "W",        # pycodestyle warnings
 ]
 ignore = [
+    "ANN101",  # Missing type annotation for `self` in method
+    "ANN102",  # Missing type annotation for `cls` in method
+    "ANN401",  # Any-typing allowed
 ]
 
 [tool.mypy]
