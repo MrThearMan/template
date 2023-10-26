@@ -23,7 +23,6 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",{% if cookiecutter.django_module %}
@@ -44,7 +43,7 @@ exclude = [
 "Bug Tracker" = "https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/issues"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<4"{% if cookiecutter.django_module %}
+python = ">=3.10,<4"{% if cookiecutter.django_module %}
 Django = ">=3.2"
 djangorestframework = ">=3.12.0"{% endif %}
 
@@ -62,12 +61,9 @@ pymdown-extensions = "10.3"
 mkdocs-mermaid2-plugin = "1.1.1"
 
 [tool.poetry.group.lint.dependencies]
-mypy = "1.5.1"{% if cookiecutter.django_module %}
+mypy = "1.6.1"{% if cookiecutter.django_module %}
 django-stubs = "4.2.4"
 djangorestframework-stubs = "3.14.3"{% endif %}
-
-[tool.black]
-line-length = 120
 
 [tool.ruff]
 fix = true
@@ -121,6 +117,21 @@ select = [
     "W",        # pycodestyle warnings
 ]
 ignore = [
+    "ANN101",  # Missing type annotation for `self` in method
+    "ANN102",  # Missing type annotation for `cls` in method
+    "ANN401",  # Any-typing allowed
+    #
+    # Conflicting with ruff-format
+    #
+    "COM812",   # Trailing comma missing
+    "COM819",   # Trailing comma prohibited
+    "E501",     # Line too long
+    "ISC001",   # Implicitly concatenated string literals on one line
+    "Q000",     # Single quotes found but double quotes preferred
+    "Q001",     # Single quote multiline found but double quotes preferred
+    "Q002",     # Single quote docstring found but double quotes preferred
+    "Q003",     # Change outer quotes to avoid escaping inner quotes
+    "W191",     # Indentation contains tabs
 ]
 
 [tool.mypy]
@@ -157,12 +168,11 @@ addopts = "-vv -s --log-cli-level=INFO"
 [tool.tox]{% if cookiecutter.django_module %}
 legacy_tox_ini = """
 [tox]
-envlist = py{39, 310, 311, 312}-drf{312, 313, 314}
+envlist = py{310, 311, 312}-drf{312, 313, 314}
 isolated_build = true
 
 [gh-actions]
 python =
-    3.9: py39
     3.10: py310
     3.11: py311
     3.12: py312
@@ -174,8 +184,6 @@ setenv =
     PYTHONPATH = {toxinidir}
     DJANGO_SETTINGS_MODULE = tests.project.settings
 deps =
-    py39: Django >=3.2,<4.0
-
     py310-drf312: Django >=3.2,<4.0
     py310-drf313: Django >=4.0,<4.1
     py310-drf314: Django >=4.1,<4.2
@@ -195,12 +203,11 @@ commands =
     coverage run -m pytest -vv -s --log-cli-level=INFO
 """{% else %}legacy_tox_ini = """
 [tox]
-envlist = py{39, 310, 311, 312}
+envlist = py{310, 311, 312}
 isolated_build = true
 
 [gh-actions]
 python =
-    3.9: py39
     3.10: py310
     3.11: py311
     3.12: py312

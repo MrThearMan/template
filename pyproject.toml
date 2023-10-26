@@ -19,7 +19,6 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -38,7 +37,7 @@ exclude = [
 "Bug Tracker" = "https://github.com/MrThearMan/cookiecutter-poetry-module/issues"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<4"
+python = ">=3.10,<4"
 
 [tool.poetry.group.test.dependencies]
 pytest = "7.4.2"
@@ -54,10 +53,7 @@ pymdown-extensions = "10.3"
 mkdocs-mermaid2-plugin = "1.1.1"
 
 [tool.poetry.group.lint.dependencies]
-mypy = "1.5.1"
-
-[tool.black]
-line-length = 120
+mypy = "1.6.1"
 
 [tool.ruff]
 fix = true
@@ -111,6 +107,18 @@ ignore = [
     "ANN101",  # Missing type annotation for `self` in method
     "ANN102",  # Missing type annotation for `cls` in method
     "ANN401",  # Any-typing allowed
+    #
+    # Conflicting with ruff-format
+    #
+    "COM812",   # Trailing comma missing
+    "COM819",   # Trailing comma prohibited
+    "E501",     # Line too long
+    "ISC001",   # Implicitly concatenated string literals on one line
+    "Q000",     # Single quotes found but double quotes preferred
+    "Q001",     # Single quote multiline found but double quotes preferred
+    "Q002",     # Single quote docstring found but double quotes preferred
+    "Q003",     # Change outer quotes to avoid escaping inner quotes
+    "W191",     # Indentation contains tabs
 ]
 
 [tool.mypy]
