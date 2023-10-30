@@ -1,12 +1,13 @@
-.PHONY: help
-.PHONY: dev
+.PHONY: help{% if cookiecutter.django_module %}
+.PHONY: dev{% endif %}
 .PHONY: docs
 .PHONY: tests
 .PHONY: test
 .PHONY: tox
 .PHONY: hook
-.PHONY: pre-commit
-.PHONY: pre-commit-update
+.PHONY: lint{% if cookiecutter.django_module %}
+.PHONY: migrate
+.PHONY: migrations{% endif %}
 .PHONY: mypy
 .PHONY: Makefile
 
@@ -21,15 +22,16 @@ args = `arg="$(filter-out $@,$(MAKECMDGOALS))" && echo $${arg:-${1}}`
 define helptext
 
   Commands:
-
-  dev                  Serve manual testing server
+{% if cookiecutter.django_module %}
+  dev                  Serve manual testing server{% endif %}
   docs                 Serve mkdocs for development.
   tests                Run all tests with coverage.
   test <name>          Run all tests maching the given <name>
   tox                  Run all tests with tox.
   hook                 Install pre-commit hook.
-  pre-commit           Run pre-commit hooks on all files.
-  pre-commit-update    Update all pre-commit hooks to latest versions.
+  lint                 Run pre-commit hooks on all files.{% if cookiecutter.django_module %}
+  migrate              Run pre-commit hooks on all files.
+  migrations           Run pre-commit hooks on all files.{% endif %}
   mypy                 Run mypy on all files.
 
   Use quotes (" ") if command contains flags (-h / --help)
@@ -58,11 +60,14 @@ tox:
 hook:
 	@poetry run pre-commit install
 
-pre-commit:
+lint:
 	@poetry run pre-commit run --all-files
+{% if cookiecutter.django_module %}
+migrate:
+	@poetry run python manage.py migrate
 
-pre-commit-update:
-	@poetry run pre-commit autoupdate
+migrations:
+	@poetry run python manage.py makemigrations{% endif %}
 
 mypy:
 	@poetry run mypy {{ cookiecutter.module_slug }}/

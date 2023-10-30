@@ -110,15 +110,20 @@ ignore = [
     #
     # Conflicting with ruff-format
     #
-    "COM812",   # Trailing comma missing
-    "COM819",   # Trailing comma prohibited
-    "E501",     # Line too long
-    "ISC001",   # Implicitly concatenated string literals on one line
-    "Q000",     # Single quotes found but double quotes preferred
-    "Q001",     # Single quote multiline found but double quotes preferred
-    "Q002",     # Single quote docstring found but double quotes preferred
-    "Q003",     # Change outer quotes to avoid escaping inner quotes
-    "W191",     # Indentation contains tabs
+    "COM812",   # missing-trailing-comma
+    "COM819",   # prohibited-trailing-comma
+    "D206",     # indent-with-spaces
+    "D300",     # triple-single-quotes
+    "E111",     # indentation-with-invalid-multiple
+    "E114",     # indentation-with-invalid-multiple-comment
+    "E117",     # over-indented
+    "ISC001",   # single-line-implicit-string-concatenation
+    "ISC002",   # multi-line-implicit-string-concatenation
+    "Q000",     # bad-quotes-inline-string
+    "Q001",     # bad-quotes-multiline-string
+    "Q002",     # bad-quotes-docstring
+    "Q003",     # avoidable-escaped-quote
+    "W191",     # tab-indentation
 ]
 
 [tool.mypy]

@@ -123,15 +123,20 @@ ignore = [
     #
     # Conflicting with ruff-format
     #
-    "COM812",   # Trailing comma missing
-    "COM819",   # Trailing comma prohibited
-    "E501",     # Line too long
-    "ISC001",   # Implicitly concatenated string literals on one line
-    "Q000",     # Single quotes found but double quotes preferred
-    "Q001",     # Single quote multiline found but double quotes preferred
-    "Q002",     # Single quote docstring found but double quotes preferred
-    "Q003",     # Change outer quotes to avoid escaping inner quotes
-    "W191",     # Indentation contains tabs
+    "COM812",   # missing-trailing-comma
+    "COM819",   # prohibited-trailing-comma
+    "D206",     # indent-with-spaces
+    "D300",     # triple-single-quotes
+    "E111",     # indentation-with-invalid-multiple
+    "E114",     # indentation-with-invalid-multiple-comment
+    "E117",     # over-indented
+    "ISC001",   # single-line-implicit-string-concatenation
+    "ISC002",   # multi-line-implicit-string-concatenation
+    "Q000",     # bad-quotes-inline-string
+    "Q001",     # bad-quotes-multiline-string
+    "Q002",     # bad-quotes-docstring
+    "Q003",     # avoidable-escaped-quote
+    "W191",     # tab-indentation
 ]
 
 [tool.mypy]
@@ -184,13 +189,9 @@ setenv =
     PYTHONPATH = {toxinidir}
     DJANGO_SETTINGS_MODULE = tests.project.settings
 deps =
-    py310-drf312: Django >=3.2,<4.0
-    py310-drf313: Django >=4.0,<4.1
-    py310-drf314: Django >=4.1,<4.2
-
-    py311-drf312: Django >=3.2,<4.0
-    py311-drf313: Django >=4.0,<4.1
-    py311-drf314: Django >=4.2,<4.3
+    drf312: Django >=3.2,<4.0
+    drf313: Django >=4.0,<4.1
+    drf314: Django >=4.1,<4.2
 
     drf312: djangorestframework >=3.12.0,<3.13.0
     drf313: djangorestframework >=3.13.0,<3.14.0
