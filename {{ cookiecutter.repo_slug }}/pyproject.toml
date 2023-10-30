@@ -200,6 +200,8 @@ deps =
     pytest
     coverage
     pytest-django
+
+    py312: setuptools
 commands =
     coverage run -m pytest -vv -s --log-cli-level=INFO
 """{% else %}legacy_tox_ini = """
