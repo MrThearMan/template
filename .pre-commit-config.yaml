@@ -1,6 +1,7 @@
 ci:
     skip:
     - ruff
+    - ruff-format
     - check-toml
     - check-yaml
     - check-json
@@ -23,7 +24,7 @@ repos:
             ]
 
 -   repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.1.4
+    rev: v0.1.5
     hooks:
     -   id: ruff
     -   id: ruff-format
