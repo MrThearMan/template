@@ -26,7 +26,6 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",{% if cookiecutter.django_module %}
-    "Framework :: Django :: 3.2",
     "Framework :: Django :: 4.0",
     "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",{% endif %}
@@ -44,26 +43,26 @@ exclude = [
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4"{% if cookiecutter.django_module %}
-Django = ">=3.2"
+Django = ">=4.0"
 djangorestframework = ">=3.12.0"{% endif %}
 
 [tool.poetry.group.test.dependencies]
-pytest = "7.4.2"
+pytest = "7.4.3"
 coverage = "7.3.2"{% if cookiecutter.django_module %}
-pytest-django = "4.5.2"{% endif %}
-pre-commit = "3.4.0"
-tox = "4.11.3"
+pytest-django = "4.7.0"{% endif %}
+pre-commit = "3.5.0"
+tox = "4.11.4"
 tox-gh-actions = "3.1.3"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "1.5.3"
-pymdown-extensions = "10.3"
+pymdown-extensions = "10.5"
 mkdocs-mermaid2-plugin = "1.1.1"
 
 [tool.poetry.group.lint.dependencies]
-mypy = "1.6.1"{% if cookiecutter.django_module %}
-django-stubs = "4.2.4"
-djangorestframework-stubs = "3.14.3"{% endif %}
+mypy = "1.7.1"{% if cookiecutter.django_module %}
+django-stubs = "4.2.6"
+djangorestframework-stubs = "3.14.5"{% endif %}
 
 [tool.ruff]
 fix = true
@@ -189,9 +188,9 @@ setenv =
     PYTHONPATH = {toxinidir}
     DJANGO_SETTINGS_MODULE = tests.project.settings
 deps =
-    drf312: Django >=3.2,<4.0
-    drf313: Django >=4.0,<4.1
-    drf314: Django >=4.1,<4.2
+    drf312: Django >=4.0,<4.1
+    drf313: Django >=4.1,<4.2
+    drf314: Django >=4.2,<4.3
 
     drf312: djangorestframework >=3.12.0,<3.13.0
     drf313: djangorestframework >=3.13.0,<3.14.0
