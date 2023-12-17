@@ -141,7 +141,8 @@ ignore = [
 [tool.mypy]
 python_version = "3.12"
 warn_return_any = "True"
-warn_unused_configs = "True"{% if cookiecutter.django_module %}
+warn_unused_configs = "True"
+ignore_missing_imports = "True"{% if cookiecutter.django_module %}
 plugins = [
     "mypy_django_plugin.main",
     "mypy_drf_plugin.main",

@@ -68,13 +68,17 @@ div.wy-nav-content,
     border-top: 1px solid #343131;
 }
 
+.wy-menu-vertical li.current,
 .wy-menu-vertical li.current > a:hover,
 .wy-menu-vertical li.toctree-l1.current > a:hover,
 .wy-menu-vertical li.toctree-l2.current > a:hover,
 .wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a:hover,
 .wy-menu-vertical li.toctree-l3.current > a:hover,
 .wy-menu-vertical li.toctree-l3.current li.toctree-l4 > a:hover {
+    color: #bbbbbb;
     background: #2d2d2d!important;
+    border-bottom: 1px solid #343131;
+    border-top: 1px solid #343131;
 }
 
 .rst-content pre code,
