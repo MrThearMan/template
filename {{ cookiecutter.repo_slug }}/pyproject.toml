@@ -28,7 +28,8 @@ classifiers = [
     "Programming Language :: Python :: 3.12",{% if cookiecutter.django_module %}
     "Framework :: Django :: 4.0",
     "Framework :: Django :: 4.1",
-    "Framework :: Django :: 4.2",{% endif %}
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",{% endif %}
 ]
 include = [
     "README.md",
