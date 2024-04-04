@@ -48,20 +48,20 @@ Django = ">=4.0"
 djangorestframework = ">=3.12.0"{% endif %}
 
 [tool.poetry.group.test.dependencies]
-pytest = "7.4.3"
-coverage = "7.3.2"{% if cookiecutter.django_module %}
+pytest = "8.1.1"
+coverage = "7.4.4"{% if cookiecutter.django_module %}
 pytest-django = "4.7.0"{% endif %}
-pre-commit = "3.5.0"
-tox = "4.11.4"
-tox-gh-actions = "3.1.3"
+pre-commit = "3.7.0"
+tox = "4.14.2"
+tox-gh-actions = "3.2.0"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "1.5.3"
-pymdown-extensions = "10.5"
+pymdown-extensions = "10.7.1"
 mkdocs-mermaid2-plugin = "1.1.1"
 
 [tool.poetry.group.lint.dependencies]
-mypy = "1.7.1"{% if cookiecutter.django_module %}
+mypy = "1.9.0"{% if cookiecutter.django_module %}
 django-stubs = "4.2.7"
 djangorestframework-stubs = "3.14.5"{% endif %}
 
@@ -139,6 +139,19 @@ ignore = [
     "W191",     # tab-indentation
 ]
 
+[tool.ruff.lint.extend-per-file-ignores]
+"test_*.py" = [
+    "S101",     # Assert is fine
+    "PLR2004",  # Allow constants
+    "ANN",      # No need to annotate tests
+    "UP",       # No upgrade rules
+]
+"conftest.py" = [
+    "ARG",      # Fixtures can be unused
+    "ANN",      # No need to annotate tests
+    "UP",       # No upgrade rules
+]
+
 [tool.mypy]
 python_version = "3.12"
 warn_return_any = "True"
@@ -169,7 +182,7 @@ exclude_lines = [
 ]
 
 [tool.pytest.ini_options]
-addopts = "-vv -s --log-cli-level=INFO"
+addopts = "-vv -s --disable-warnings"
 
 [tool.tox]{% if cookiecutter.django_module %}
 legacy_tox_ini = """
@@ -205,7 +218,8 @@ deps =
     py312: setuptools
 commands =
     coverage run -m pytest -vv -s --log-cli-level=INFO
-"""{% else %}legacy_tox_ini = """
+"""{% else %}
+legacy_tox_ini = """
 [tox]
 envlist = py{310, 311, 312}
 isolated_build = true
