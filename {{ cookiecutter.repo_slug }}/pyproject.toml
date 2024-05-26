@@ -12,6 +12,7 @@ license = "MIT"
 readme = "README.md"
 homepage = "https://mrthearman.github.io/{{ cookiecutter.repo_slug }}"
 repository = "https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}"
+documentation = "https://mrthearman.github.io/{{ cookiecutter.repo_slug }}"
 keywords = [
     "...",
 ]
@@ -205,7 +206,7 @@ known-third-party = [
     "django",
 ]
 known-first-party = [
-    "env_config",
+    "{{ cookiecutter.module_slug }}",
 ]
 
 [tool.ruff.lint.flake8-import-conventions]
