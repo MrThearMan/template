@@ -262,7 +262,8 @@ exclude_lines = [
     "pass",
 ]
 
-[tool.pytest.ini_options]
+[tool.pytest.ini_options]{% if cookiecutter.django_module %}
+DJANGO_SETTINGS_MODULE = "tests.project.settings"{% endif %}
 addopts = "-vv -s --disable-warnings"
 
 [tool.tox]{% if cookiecutter.django_module %}
