@@ -32,10 +32,12 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",{% if cookiecutter.django_module %}
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",{% if cookiecutter.django_module %}
     "Framework :: Django",
     "Framework :: Django :: 4.2",
-    "Framework :: Django :: 5.0",{% endif %}
+    "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.1",{% endif %}
 ]
 exclude = [
     "tests",
@@ -49,21 +51,21 @@ python = ">=3.10,<4"{% if cookiecutter.django_module %}
 Django = ">=4.2"{% endif %}
 
 [tool.poetry.group.test.dependencies]
-pytest = "8.1.2"
-coverage = "7.5.0"{% if cookiecutter.django_module %}
-pytest-django = "4.8.0"{% endif %}
-pre-commit = "3.7.0"
-tox = "4.15.0"
+pytest = "8.3.3"
+coverage = "7.6.2"{% if cookiecutter.django_module %}
+pytest-django = "4.9.0"{% endif %}
+tox = "4.21.2"
 tox-gh-actions = "3.2.0"
 
 [tool.poetry.group.docs.dependencies]
-mkdocs = "1.6.0"
-pymdown-extensions = "10.8"
+mkdocs = "1.6.1"
+pymdown-extensions = "10.11.2"
 mkdocs-mermaid2-plugin = "1.1.1"
 
 [tool.poetry.group.lint.dependencies]
-mypy = "1.10.0"{% if cookiecutter.django_module %}
-django-stubs = "4.2.7"{% endif %}
+mypy = "1.11.2"
+pre-commit = "4.0.1"{% if cookiecutter.django_module %}
+django-stubs = "5.1.0"{% endif %}
 
 [tool.ruff]
 fix = true
@@ -234,7 +236,7 @@ banned-from = [
 ]
 
 [tool.mypy]
-python_version = "3.12"
+python_version = "3.13"
 warn_return_any = "True"
 warn_unused_configs = "True"
 ignore_missing_imports = "True"{% if cookiecutter.django_module %}
@@ -269,7 +271,7 @@ addopts = "-vv -s --disable-warnings"
 [tool.tox]{% if cookiecutter.django_module %}
 legacy_tox_ini = """
 [tox]
-envlist = py{310, 311, 312}-django{42, 50}
+envlist = py{310, 311, 312, 313}-django{42, 50, 51}
 isolated_build = true
 
 [gh-actions]
@@ -277,6 +279,7 @@ python =
     3.10: py310
     3.11: py311
     3.12: py312
+    3.13: py313
 
 [testenv]
 allowlist_externals =
@@ -287,6 +290,7 @@ setenv =
 deps =
     django42: Django >=4.2,<4.3
     django50: Django >=5.0,<5.1
+    django51: Django >=5.1,<5.2
 
     pytest
     coverage
@@ -296,7 +300,7 @@ commands =
 """{% else %}
 legacy_tox_ini = """
 [tox]
-envlist = py{310, 311, 312}
+envlist = py{310, 311, 312, 313}
 isolated_build = true
 
 [gh-actions]
@@ -304,6 +308,7 @@ python =
     3.10: py310
     3.11: py311
     3.12: py312
+    3.13: py313
 
 [testenv]
 allowlist_externals =
@@ -316,5 +321,5 @@ commands =
 """{% endif %}
 
 [build-system]
-requires = ["poetry-core>=1.7.0"]
+requires = ["poetry-core>=1.9.0"]
 build-backend = "poetry.core.masonry.api"
