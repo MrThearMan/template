@@ -8,7 +8,6 @@
 .PHONY: lint{% if cookiecutter.django_module %}
 .PHONY: migrate
 .PHONY: migrations{% endif %}
-.PHONY: mypy
 .PHONY: Makefile
 
 # Trick to allow passing commands to make
@@ -32,7 +31,6 @@ define helptext
   lint                 Run pre-commit hooks on all files.{% if cookiecutter.django_module %}
   migrate              Run pre-commit hooks on all files.
   migrations           Run pre-commit hooks on all files.{% endif %}
-  mypy                 Run mypy on all files.
 
   Use quotes (" ") if command contains flags (-h / --help)
 endef
@@ -68,6 +66,3 @@ migrate:
 
 migrations:
 	@poetry run python manage.py makemigrations{% endif %}
-
-mypy:
-	@poetry run mypy {{ cookiecutter.module_slug }}/

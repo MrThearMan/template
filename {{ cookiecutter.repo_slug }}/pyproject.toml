@@ -1,18 +1,12 @@
-[tool.poetry]
+[project]
 name = "{{ cookiecutter.pypi_name }}"
 version = "0.0.1"
 description = "{{ cookiecutter.description }}"
 authors = [
-    "Matti Lamppu <lamppu.matti.akseli@gmail.com>",
-]
-packages = [
-    { include = "{{ cookiecutter.module_slug }}" },
+    { name = "Matti Lamppu", email = "lamppu.matti.akseli@gmail.com" },
 ]
 license = "MIT"
 readme = "README.md"
-homepage = "https://mrthearman.github.io/{{ cookiecutter.repo_slug }}"
-repository = "https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}"
-documentation = "https://mrthearman.github.io/{{ cookiecutter.repo_slug }}"
 keywords = [
     "...",
 ]
@@ -39,33 +33,41 @@ classifiers = [
     "Framework :: Django :: 5.0",
     "Framework :: Django :: 5.1",{% endif %}
 ]
-exclude = [
-    "tests",
+requires-python = ">=3.10,<4"
+dynamic = [
+    "dependencies",
 ]
 
-[tool.poetry.urls]
+[project.urls]
+"Homepage" = "https://mrthearman.github.io/{{ cookiecutter.repo_slug }}"
+"Repository" = "https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}"
 "Bug Tracker" = "https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/issues"
+"Documentation" = "https://mrthearman.github.io/{{ cookiecutter.repo_slug }}"
 
-[tool.poetry.dependencies]
-python = ">=3.10,<4"{% if cookiecutter.django_module %}
+[tool.poetry]
+requires-poetry = ">=2.0.0"
+packages = [
+    { include = "{{ cookiecutter.module_slug }}" },
+]
+
+[tool.poetry.dependencies]{% if cookiecutter.django_module %}
 Django = ">=4.2"{% endif %}
 
 [tool.poetry.group.test.dependencies]
-pytest = "8.3.3"
-coverage = "7.6.2"{% if cookiecutter.django_module %}
+pytest = "8.3.4"
+coverage = "7.6.10"{% if cookiecutter.django_module %}
 pytest-django = "4.9.0"{% endif %}
-tox = "4.21.2"
+tox = "4.23.2"
 tox-gh-actions = "3.2.0"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "1.6.1"
-pymdown-extensions = "10.11.2"
-mkdocs-mermaid2-plugin = "1.1.1"
+pymdown-extensions = "10.14"
+pygments = "2.19.1"
+mkdocs-mermaid2-plugin = "1.2.1"
 
 [tool.poetry.group.lint.dependencies]
-mypy = "1.11.2"
-pre-commit = "4.0.1"{% if cookiecutter.django_module %}
-django-stubs = "5.1.0"{% endif %}
+pre-commit = "4.0.1"
 
 [tool.ruff]
 fix = true
@@ -152,8 +154,7 @@ lint.extend-select = [
     "UP042",    # replace-str-enum
 ]
 lint.ignore = [
-    "ANN101",   # Missing type annotation for `self` in method
-    "ANN102",   # Missing type annotation for `cls` in method
+    "A005",     # Allow shadowing builtin modules
     "ANN401",   # Any-typing allowed
     "ARG001",   # Unused function argument
     "ARG002",   # Unused method argument
@@ -235,18 +236,6 @@ banned-from = [
     "yaml",
 ]
 
-[tool.mypy]
-python_version = "3.13"
-warn_return_any = "True"
-warn_unused_configs = "True"
-ignore_missing_imports = "True"{% if cookiecutter.django_module %}
-plugins = [
-    "mypy_django_plugin.main",
-]{% endif %}{% if cookiecutter.django_module %}
-
-[tool.django-stubs]
-django_settings_module = "tests.project.settings"{% endif %}
-
 [tool.coverage.run]
 relative_files = true
 
@@ -265,8 +254,8 @@ exclude_lines = [
 ]
 
 [tool.pytest.ini_options]{% if cookiecutter.django_module %}
-DJANGO_SETTINGS_MODULE = "tests.project.settings"{% endif %}
-addopts = "-vv -s --disable-warnings"
+DJANGO_SETTINGS_MODULE = "example_project.config.settings"{% endif %}
+addopts = "--disable-warnings"
 
 [tool.tox]{% if cookiecutter.django_module %}
 legacy_tox_ini = """
@@ -286,7 +275,7 @@ allowlist_externals =
     poetry
 setenv =
     PYTHONPATH = {toxinidir}
-    DJANGO_SETTINGS_MODULE = tests.project.settings
+    DJANGO_SETTINGS_MODULE = example_project.config.settings
 deps =
     django42: Django >=4.2,<4.3
     django50: Django >=5.0,<5.1
@@ -296,7 +285,7 @@ deps =
     coverage
     pytest-django
 commands =
-    coverage run -m pytest -vv -s --disable-warnings
+    coverage run -m pytest --disable-warnings
 """{% else %}
 legacy_tox_ini = """
 [tox]
@@ -317,9 +306,9 @@ setenv =
     PYTHONPATH = {toxinidir}
 commands =
     poetry install
-    poetry run coverage run -m pytest
+    poetry run coverage run -m pytest --disable-warnings
 """{% endif %}
 
 [build-system]
-requires = ["poetry-core>=1.9.0"]
+requires = ["poetry-core>=2.0.0"]
 build-backend = "poetry.core.masonry.api"
