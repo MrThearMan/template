@@ -9,22 +9,6 @@
 [![Downloads][downloads-badge]][pypi]
 [![Python Version][version-badge]][pypi]
 
-```shell
-pip install {{ cookiecutter.pypi_name }}
-```
-
----
-
-**Documentation**: [https://mrthearman.github.io/{{ cookiecutter.repo_slug }}/](https://mrthearman.github.io/{{ cookiecutter.repo_slug }}/)
-
-**Source Code**: [https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/](https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/)
-
-**Contributing**: [https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/blob/main/CONTRIBUTING.md](https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/blob/main/CONTRIBUTING.md)
-
----
-
-{{ cookiecutter.description }}
-
 [coverage-badge]: https://coveralls.io/repos/github/MrThearMan/{{ cookiecutter.repo_slug }}/badge.svg?branch=main
 [status-badge]: https://img.shields.io/github/actions/workflow/status/MrThearMan/{{ cookiecutter.repo_slug }}/test.yml?branch=main
 [pypi-badge]: https://img.shields.io/pypi/v/{{ cookiecutter.pypi_name }}
@@ -40,3 +24,19 @@ pip install {{ cookiecutter.pypi_name }}
 [licence]: https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/blob/main/LICENSE
 [repo]: https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/commits/main
 [issues]: https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/issues
+
+```shell
+pip install {{ cookiecutter.pypi_name }}
+```
+
+---
+
+**Documentation**: [https://mrthearman.github.io/{{ cookiecutter.repo_slug }}/](https://mrthearman.github.io/{{ cookiecutter.repo_slug }}/)
+
+**Source Code**: [https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/](https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/)
+
+**Contributing**: [https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/blob/main/CONTRIBUTING.md](https://github.com/MrThearMan/{{ cookiecutter.repo_slug }}/blob/main/CONTRIBUTING.md)
+
+---
+
+{{ cookiecutter.description }}
