@@ -2,33 +2,33 @@
 Variables
 */
 :root {
-    --undine-nav-width: 250px;
-    --undine-mobile-nav-width: 85%;
+    --project-nav-width: 250px;
+    --project-mobile-nav-width: 85%;
 
-    --undine-text-color: #bbbbbb;
-    --undine-nav-color: #191919;
-    --undine-section-color: #222222;
-    --undine-active-color: #111111;
-    --undine-quote-color: #424242;
-    --undine-notice-color: #aa4926;
-    --undine-target-color: #292900;
+    --project-text-color: #bbbbbb;
+    --project-nav-color: #191919;
+    --project-section-color: #222222;
+    --project-active-color: #111111;
+    --project-quote-color: #424242;
+    --project-notice-color: #aa4926;
+    --project-target-color: #292900;
 
-    --undine-code-color: #1a1c20;
-    --undine-lineno-color: #404d60;
-    --undine-highlight-color: #23252d;
+    --project-code-color: #1a1c20;
+    --project-lineno-color: #404d60;
+    --project-highlight-color: #23252d;
 
-    --undine-scrollbar-color: #424242;
+    --project-scrollbar-color: #424242;
 
     /* Default color */
-    background-color: var(--undine-section-color);
+    background-color: var(--project-section-color);
 }
 
 /*
 Layout
 */
 body {
-    color: var(--undine-text-color);
-    background-color: var(--undine-section-color);
+    color: var(--project-text-color);
+    background-color: var(--project-section-color);
 
     .wy-grid-for-nav {
 
@@ -36,8 +36,8 @@ body {
         Sidebar
         */
         nav.wy-nav-side {
-            background-color: var(--undine-nav-color);
-            width: var(--undine-nav-width);
+            background-color: var(--project-nav-color);
+            width: var(--project-nav-width);
             padding-bottom: 0;
 
             .wy-side-scroll {
@@ -49,17 +49,17 @@ body {
                 */
                 .wy-side-nav-search {
                     width: auto;
-                    background-color: var(--undine-nav-color);
+                    background-color: var(--project-nav-color);
 
                     /*
                     Search bar
                     */
                     input[type=text] {
-                        color: var(--undine-text-color);
-                        background-color: var(--undine-section-color);
-                        border-color: var(--undine-active-color);
+                        color: var(--project-text-color);
+                        background-color: var(--project-section-color);
+                        border-color: var(--project-active-color);
                         box-shadow: none;
-                        caret-color : var(--undine-text-color);
+                        caret-color : var(--project-text-color);
                     }
                 }
 
@@ -67,15 +67,15 @@ body {
                 Sidebar items
                 */
                 .wy-menu-vertical {
-                    width: var(--undine-nav-width);
+                    width: var(--project-nav-width);
 
                     /*
                     Not selected
                     */
                     li[class^='toctree-'],
                     li[class^='toctree-'] > a {
-                        color: var(--undine-text-color);
-                        background-color: var(--undine-nav-color);
+                        color: var(--project-text-color);
+                        background-color: var(--project-nav-color);
                         border: none;
                     }
 
@@ -86,8 +86,8 @@ body {
                     li[class^='toctree-'].current > a,
                     li[class^='toctree-'].current > a:hover,
                     li[class^='toctree-'] > a:hover {
-                        color: var(--undine-text-color);
-                        background-color: var(--undine-active-color);
+                        color: var(--project-text-color);
+                        background-color: var(--project-active-color);
                         border: none;
                     }
                 }
@@ -100,18 +100,18 @@ body {
         Content
         */
         section.wy-nav-content-wrap {
-            margin-left: var(--undine-nav-width);
-            background-color: var(--undine-section-color);
+            margin-left: var(--project-nav-width);
+            background-color: var(--project-section-color);
 
             /*
             Mobile top nav
             */
             nav.wy-nav-top {
-                background-color: var(--undine-nav-color);
+                background-color: var(--project-nav-color);
             }
 
             .wy-nav-content {
-                background-color: var(--undine-section-color);
+                background-color: var(--project-section-color);
                 max-width: 1024px;
                 margin: auto;
 
@@ -126,7 +126,7 @@ body {
                     padding-left: 0.5rem;
                     padding-right: 0.5rem;
                     border-radius: 6px;
-                    background-color: var(--undine-target-color);
+                    background-color: var(--project-target-color);
                 }
             }
         }
@@ -142,7 +142,7 @@ body {
             nav.wy-nav-side {
 
                 &.shift {
-                    width: var(--undine-mobile-nav-width);
+                    width: var(--project-mobile-nav-width);
                 }
 
                 .wy-side-scroll {
@@ -162,7 +162,7 @@ body {
                 &.shift {
                     position: fixed;
                     min-width: 100%;
-                    left: var(--undine-mobile-nav-width);
+                    left: var(--project-mobile-nav-width);
                     top: 0;
                     height: 100%;
                     overflow: hidden;
@@ -185,9 +185,9 @@ body {
 Codeblocks
 */
 .highlight {
-    color: var(--undine-text-color) !important;
-    background-color: var(--undine-code-color) !important;
-    border: 1px solid var(--undine-code-color) !important;
+    color: var(--project-text-color) !important;
+    background-color: var(--project-code-color) !important;
+    border: 1px solid var(--project-code-color) !important;
     border-radius: 6px;
 
     div {
@@ -201,8 +201,8 @@ Codeblocks
         display: block;
 
         td.linenos {
-            color: var(--undine-text-color) !important;
-            background-color: var(--undine-code-color) !important;
+            color: var(--project-text-color) !important;
+            background-color: var(--project-code-color) !important;
             border: none !important;
             margin: 0;
             padding: 0;
@@ -213,7 +213,7 @@ Codeblocks
                 pre {
                     padding: 0;
                     line-height: 125%;
-                    border-right: 1px solid var(--undine-lineno-color);
+                    border-right: 1px solid var(--project-lineno-color);
 
                     span {
 
@@ -223,11 +223,11 @@ Codeblocks
 
                         &.special {
                             padding: 0 13px;
-                            background-color: var(--undine-highlight-color);
+                            background-color: var(--project-highlight-color);
                         }
 
                         a {
-                            color: var(--undine-lineno-color);
+                            color: var(--project-lineno-color);
                         }
 
                     }
@@ -237,8 +237,8 @@ Codeblocks
         }
 
         td.code {
-            color: var(--undine-text-color) !important;
-            background-color: var(--undine-code-color) !important;
+            color: var(--project-text-color) !important;
+            background-color: var(--project-code-color) !important;
             border: none !important;
             padding: 0;
             margin: 0;
@@ -252,13 +252,13 @@ Codeblocks
                     margin: 0;
 
                     code {
-                        color: var(--undine-text-color);
-                        background-color: var(--undine-code-color);
+                        color: var(--project-text-color);
+                        background-color: var(--project-code-color);
                         padding: 8px 12px;
                         border: none;
 
                         .hll {
-                            background-color: var(--undine-highlight-color);
+                            background-color: var(--project-highlight-color);
                         }
                     }
                 }
@@ -275,7 +275,7 @@ Details
 details {
     margin-bottom: 24px;
     padding: 8px 16px;
-    border: 2px solid var(--undine-quote-color);
+    border: 2px solid var(--project-quote-color);
     border-radius: 6px;
 
     summary {
@@ -295,9 +295,9 @@ details {
 Inline code
 */
 .rst-content code {
-    color: var(--undine-text-color);
-    background-color: var(--undine-code-color);
-    border: 1px solid var(--undine-code-color);
+    color: var(--project-text-color);
+    background-color: var(--project-code-color);
+    border: 1px solid var(--project-code-color);
     border-radius: 6px;
 }
 
@@ -311,24 +311,24 @@ Scrollbars
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
-    background-color: var(--undine-nav-color);
+    background-color: var(--project-nav-color);
 }
 ::-webkit-scrollbar-track {
     border-radius: 6px;
-    background-color: var(--undine-nav-color);
+    background-color: var(--project-nav-color);
 }
 ::-webkit-scrollbar-thumb {
     border-radius: 6px;
-    background-color: var(--undine-scrollbar-color);
+    background-color: var(--project-scrollbar-color);
 }
 
 /*
 Blockquotes
 */
 blockquote {
-    background-color: var(--undine-quote-color);
-    border: 1px solid var(--undine-quote-color);
-    border-left: 4px solid var(--undine-notice-color);
+    background-color: var(--project-quote-color);
+    border: 1px solid var(--project-quote-color);
+    border-left: 4px solid var(--project-notice-color);
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
     margin-left: 0 !important;
