@@ -306,6 +306,17 @@ Inline code
 }
 
 /*
+Search page search bar
+*/
+#mkdocs-search-query {
+    color: var(--undine-text-color);
+    background-color: var(--undine-section-color);
+    border-color: var(--undine-active-color);
+    box-shadow: none;
+    caret-color : var(--undine-text-color);
+}
+
+/*
 Scrollbars
 */
 ::-webkit-scrollbar {
